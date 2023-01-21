@@ -1,0 +1,214 @@
+<table class="table table-hover">
+<thead>
+<caption style="caption-side:top;"><center>Content and Options</center></caption>
+<tr>
+<th style="font-size:13px;">Title</th>
+<th style="font-size:13px;"><center>Result</center></th>
+<th style="font-size:13px;"><center>Security</center></th>
+</tr>
+</thead>
+<tbody>
+
+<tr><td>
+<p style="font-size:13px;"><b>OS Root Directory</b></p>
+<td style="font-size:12px;">
+<span id="OsRootD">
+{{ OsRootD|safe|lower }}
+</span>
+<button onclick="show_auth('#OsRootD','#bOsRootD')" id="bOsRootD" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if "options none" in OsRootD|lower %} 
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Web Root Directory</b></p>
+<td style="font-size:12px;">
+<span id="WebRootD">
+{{ WebRootD|safe }}
+</span>
+<button onclick="show_auth('#WebRootD','#bWebRootD')" id="bWebRootD" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Other Directories</b></p>
+<td style="font-size:12px;">
+<span id="OtherD">
+{{ OtherD|safe }}
+</span>
+<button onclick="show_auth('#OtherD','#bOtherD')" id="bOtherD" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Default HTML Content</b></p>
+<td style="font-size:12px;">
+<span id="DHtmlContent">
+{{ DHtmlContent}}
+</span>
+<button onclick="show_auth('#DHtmlContent','#bDHtmlContent')" id="bDHtmlContent" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Default CGI Content printenv</b></p>
+<td style="font-size:12px;">
+<span id="DCGIContentP"> 
+{% if  DCGIContentP == "" %}
+None
+{% else %}
+{{DCGIContentP}}
+{% endif %}
+</span>
+<button onclick="show_auth('#DCGIContentP','#bDCGIContentP')" id="bDCGIContentP" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if  DCGIContentP == "" %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Default CGI Content test-cgi</b></p>
+<td style="font-size:12px;">
+<span id="DCGIContentTest"> 
+{% if  DCGIContentTest == "" %}
+None
+{% endif %}
+{% if  DCGIContentTest != "" %}
+{{DCGIContentTest}}
+{% endif %}
+</span>
+<button onclick="show_auth('#DCGIContentTest','#bDCGIContentTest')" id="bDCGIContentTest" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if  DCGIContentTest == "" %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>HTTP Request Methods</b></p>
+<td style="font-size:12px;">
+<span id="HttpRM">
+{{HttpRM}}
+</span>
+<button onclick="show_auth('#HttpRM','#bHttpRM')" id="bHttpRM" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr> 
+
+<tr><td>
+<p style="font-size:13px;"><b>HTTP TRACE Method</b></p>
+<td style="font-size:12px;">
+<span id="HttpTraceM">
+{{HttpTraceM}}
+</span>
+<button onclick="show_auth('#HttpTraceM','#bHttpTraceM')" id="bHttpTraceM" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr>
+
+
+<tr><td>
+<p style="font-size:13px;"><b>HTTP Protocol Versions</b></p>
+<td style="font-size:12px;">
+<span id="HttpPrVer">
+{{HttpPrVer}}
+</span>
+<button onclick="show_auth('#HttpPrVer','#bHttpPrVer')" id="bHttpPrVer" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr>
+
+
+
+<tr><td>
+<p style="font-size:13px;"><b>File Extensions</b></p>
+<td style="font-size:12px;">
+<span id="FileE">
+{{FileE}}
+</span>
+<button onclick="show_auth('#FileE','#bFileE')" id="bFileE" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr>
+
+
+<tr><td>
+<p style="font-size:13px;"><b>Deny IP Address Based Requests</b></p>
+<td style="font-size:12px;">
+<span id="DenyIP">
+{%if DenyIP == "" %}
+None
+{% endif %}
+{%if DenyIP != "" %}
+{{DenyIP}}
+{% endif %}
+</span>
+<button onclick="show_auth('#DenyIP','#bDenyIP')" id="bDenyIP" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr>
+
+
+<tr><td>
+<p style="font-size:13px;"><b>Listen Directive </b></p>
+<td style="font-size:12px;">
+<span id="ListenDir">
+{{ListenDir|safe}}
+</span>
+<button onclick="show_auth('#ListenDir','#bListenDir')" id="bListenDir" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+<span class="badge bdgs">!</span>
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Browser Frame Options</b></p>
+<td style="font-size:12px;">
+<span id="BrowserFraOpt">
+{{BrowserFraOpt}}
+</span>
+<button onclick="show_auth('#BrowserFraOpt','#bBrowserFraOpt')" id="bBrowserFraOpt" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if BrowserFraOpt == "Header always append X-Frame-Options" %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>

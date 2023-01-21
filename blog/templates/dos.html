@@ -1,0 +1,91 @@
+<table class="table table-hover">
+<thead>
+<caption style="caption-side:top;"><center>Apache Access Control</center></caption>
+<tr>
+<th style="font-size:13px;">Title</th>
+<th style="font-size:13px;"><center>Result</center></th>
+<th style="font-size:13px;"><center>Security</center></th>
+</tr>
+</thead>
+<tbody>
+
+<tr><td>
+<p style="font-size:13px;"><b>TimeOut</b></p></td>
+<td style="font-size:12px;">
+<span id="timeout">
+{% if TimeOut|add:"0" == 0 %}
+None
+{% else %}
+{{ TimeOut }}
+{% endif %}
+</span>
+<button onclick="show_auth('#timeout','#btimeout')" id="btimeout" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if TimeOut|add:"0" == 0 or TimeOut|add:"0" > 10 %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>KeepAlive </b></p></td>
+<td style="font-size:12px;">
+<span id="keepa">
+{% if KeepAlive == "" %}
+None
+{% else %}
+{{ KeepAlive }}
+{% endif %}
+</span>
+<button onclick="show_auth('#keepa','#bkeepa')" id="bkeepa" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if "KeepAlive On" not in KeepAlive and KeepAlive != "" %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>MaxKeepAliveRequests</b></p></td>
+<td style="font-size:12px;">
+<span id="maxkeep">
+{% if MaxKeep|add:"0" == 0 %}
+None
+{% else %}
+{{ MaxKeep }}
+{% endif %}
+</span>
+<button onclick="show_auth('#maxkeep','#bmaxkeep')" id="bmaxkeep" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if MaxKeep|add:"0" == 0 or MaxKeep|add:"0" < 100 %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>KeepAliveTimeout</b></p></td>
+<td style="font-size:12px;">
+<span id="keeptime">
+{% if KeepTime|add:"0" == 0 %}
+None
+{% else %}
+{{ KeepTime }}
+{% endif %}
+</span>
+<button onclick="show_auth('#keeptime','#bkeeptime')" id="bkeeptime" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if KeepTime|add:"0" != 0 and KeepTime|add:"0" > 15 %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>

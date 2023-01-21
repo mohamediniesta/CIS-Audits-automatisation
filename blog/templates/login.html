@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body class="backgr">
+<div class="preload">
+<center><img src="https://www.rackmountpro.com/images/path-products/image--350--350--CentOS_icon.png" /></center><br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" /><br>
+<center>CentOS Benchmarks Scanning ..</center>
+</div>
+<style>
+.backgr{
+background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)), url("https://wallpapercave.com/wp/wp2071854.png") center center;
+
+}
+</style>
+<script>
+$(document).ready(function() {
+$('.preload').hide();
+$("#form1").submit(function() {
+$(".content").css("display","none");
+$(".backgr").css('background','white');
+$(".preload").css({"width": "1OO%","position":"fixed","top":"5%","left":"35%"});
+$('.preload').show();
+/*$(function() {
+    $(".preload").fadeOut(2000, function() {
+        $(".content").fadeIn(1000);        
+    });
+});*/
+});
+});
+</script>
+<div class="content">
+<div class="container">
+<br><br><br>
+<form method="post" id="form1" name="form1" >
+{% csrf_token %}
+<div class="row">
+<div class="col-md-5"></div>
+<div class="col-md-5">
+<img src="http://www.sshbuild.co.uk/wp-content/themes/ssh-cleaning/images/logo.png" />
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-5">
+<input type="text" class="form-control" placeholder="SSH Host ... " name="host" />
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-5">
+<input type="text" class="form-control" placeholder="SSH Username ... " name="user" />
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-5">
+<input type="password" class="form-control" placeholder="SSH Password ... " name="pass" />
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-5">
+<center><button type="submit" style="border-radius:15px;" class="btn btn-outline-danger">Scan</button></center>
+</div>
+</div>
+</form>
+</div>
+</div>
+</body>
+</html>

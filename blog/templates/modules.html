@@ -1,0 +1,184 @@
+<table class="table table-hover">
+<thead>
+<caption style="caption-side:top;"><center>Apache Modules</center></caption>
+<tr>
+<th style="font-size:13px;">Mod Name</th>
+<th style="font-size:13px;">Status</th>
+<th style="font-size:13px;"><center>Modules</center></th>
+<th style="font-size:13px;"><center>Security</center></th>
+</tr>
+</thead>
+<tbody>
+<tr><td>
+<p style="font-size:13px;"><b>Authentification</b></p>
+<td>
+{% if auth != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="auth">
+{{ auth }}
+</span>
+<button onclick="show_auth('#auth','#bauth')" id="bauth" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgs">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgd">!</span></td>
+{% endif %}
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>LDAP</b> </p>
+<td>
+{% if ldap != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="ldap">
+{{ ldap }}
+</span>
+<button onclick="show_auth('#ldap','#bldap')" id="bldap" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgs">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgs">!</span></td>
+{% endif %}
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>Log Config</b> </p>
+<td>
+{% if log != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="log">
+{{ log }}
+</span>
+<button onclick="show_auth('#log','#blog')" id="blog" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgs">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgd">!</span></td>
+{% endif %}
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>WebDav</b> </p>
+<td>
+{% if dav != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="dav">
+{{ dav }}
+</span>
+<button onclick="show_auth('#dav','#bdav')" id="bdav" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgd">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgs">!</span></td>
+{% endif %}
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>Status Module</b> </p>
+<td>
+{% if status != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="status">
+{{ status }}
+</span>
+<button onclick="show_auth('#status','#bstatus')" id="bstatus" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgd">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgs">!</span></td>
+{% endif %}
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>Auto Index</b> </p>
+<td>
+{% if index != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="autoindex">
+{{ index }}
+</span>
+<button onclick="show_auth('#autoindex','#bautoindex')" id="bautoindex" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgd">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgs">!</span></td>
+{% endif %}
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>Mod Proxy</b> </p>
+<td>
+{% if proxy != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="proxy">
+{{ proxy }}
+</span>
+<button onclick="show_auth('#proxy','#bproxy')" id="bproxy" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgd">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgs">!</span></td>
+{% endif %}
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>User Directory</b> </p>
+<td>
+{% if user != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="userdir">
+{{ user }}
+</span>
+<button onclick="show_auth('#userdir','#buserdir')" id="buserdir" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgd">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgs">!</span></td>
+{% endif %}
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>Info Modules</b> </p>
+<td>
+{% if info != "" %}
+<span class="badge bdgs">On</span>
+</td>
+<td style="font-size:12px;">
+<span id="info">
+{{ info }}
+</span>
+<button onclick="show_auth('#info','#binfo')" id="binfo" class="btn btn-success bxs">Show Modules</button>
+</td>
+<td><span class="badge bdgd">!</span></td>
+{% else %}
+<span class="badge bdgd">Off</span>
+<td style="font-size:12px;">None</td>
+<td><span class="badge bdgs">!</span></td>
+{% endif %}
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,215 @@
+<table class="table table-hover">
+<thead>
+<caption style="caption-side:top;"><center>Permission and OwnerShip</center></caption>
+<tr>
+<th style="font-size:13px;">Title</th>
+<th style="font-size:13px;"><center>Result</center></th>
+<th style="font-size:13px;"><center>Security</center></th>
+</tr>
+</thead>
+<tbody>
+
+<tr><td>
+<p style="font-size:13px;"><b>Apache User</b></p>
+<td style="font-size:12px;">
+<span id="usr_apache">
+{{ usr_apache }} <br> {{ grp_apache }}
+</span>
+<button onclick="show_auth('#usr_apache','#busr_apache')" id="busr_apache" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if usr_apache|slice:"5:" != "root" and grp_apache|slice:":6" != "root" or grp_apache|slice:":6" != "wheel" %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>User Shell </b></p>
+<td style="font-size:12px;">
+<span id="userShell">
+{{ passwd }}
+</span>
+<button onclick="show_auth('#userShell','#buserShell')" id="buserShell" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if "/sbin/nologin" in passwd %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>User Password Lock </b></p>
+<td style="font-size:12px;">
+<span id="shell">
+{{ lock }}
+</span>
+<button onclick="show_auth('#shell','#bshell')" id="bshell" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if lock == "Mot de passe verrouillé." %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Apache  User Directory config </b></p>
+<td style="font-size:12px;">
+<span id="apacheD">
+{{ apacheDir }}
+{% if apacheDir == "" %}
+None
+{% endif %}
+</span>
+<button onclick="show_auth('#apacheD','#bapacheD')" id="bapacheD" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if apacheDir != "" %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Apache Group Directory config </b></p>
+<td style="font-size:12px;">
+<span id="apacheDG">
+{{ apacheGrp }}
+{% if apacheGrp == "" %}
+None
+{% endif %}
+</span>
+<button onclick="show_auth('#apacheDG','#bapacheDG')" id="bapacheDG" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if apacheGrp != "" %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Write access </b></p>
+<td style="font-size:12px;">
+<span id="WA">
+{{ WrA }}
+{% if WrA == "" %}
+None
+{% endif %}
+</span>
+<button onclick="show_auth('#WA','#bWA')" id="bWA" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if WrA != "" %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>Core Dump Directory</b></p>
+<td style="font-size:12px;">
+<span id="CD">
+{{CDD}}
+</span>
+<button onclick="show_auth('#CD','#bCD')" id="bCD" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Secure the Lock File</b></p>
+<td style="font-size:12px;">
+<span id="LokFF">
+{{LokF}}
+</span>
+<button onclick="show_auth('#LokFF','#bLokFF')" id="bLokFF" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Pid File</b></p>
+<td style="font-size:12px;">
+<span id="PID">
+{{FilePID}}
+</span>
+<button onclick="show_auth('#PID','#bPID')" id="bPID" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>ScoreBoard File</b></p>
+<td style="font-size:12px;">
+<span id="AccesLog">
+{{accessLog}}
+</span>
+<button onclick="show_auth('#AccesLog','#bAccesLog')" id="bAccesLog" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+
+</td>
+</tr>
+
+<tr><td>
+<p style="font-size:13px;"><b>Write Access Directories and Files</b></p>
+<td style="font-size:12px;">
+<span id="WriteADFF">
+{{WriteADF}}
+{% if WriteADF == "" %}
+None
+{% endif %}
+</span>
+<button onclick="show_auth('#WriteADFF','#bWriteADFF')" id="bWriteADFF" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if WriteADF != "" %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+
+</td>
+</tr>
+
+<tr><td>
+<p  style="font-size:13px;"><b>Write Access Root Directories and Files</b></p>
+<td style="font-size:12px;">
+<span id="WriteARDFF">
+{{WriteARDF}}
+{% if WriteARDF == "" %}
+None
+{% endif %}
+</span>
+<button onclick="show_auth('#WriteARDFF','#bWriteARDFF')" id="bWriteARDFF" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if WriteARDF != "" %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>

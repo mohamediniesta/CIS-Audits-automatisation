@@ -1,0 +1,28 @@
+<table class="table table-hover">
+<thead>
+<caption style="caption-side:top;"><center>Content and Options</center></caption>
+<tr>
+<th style="font-size:13px;">Title</th>
+<th style="font-size:13px;"><center>Result</center></th>
+<th style="font-size:13px;"><center>Security</center></th>
+</tr>
+</thead>
+<tbody>
+
+<tr><td>
+<p style="font-size:13px;"><b>OS Root Directory</b></p>
+<td style="font-size:12px;">
+<span id="#OsRootD">
+{{ OsRootD }}
+</span>
+<button onclick="show_auth('#OsRootD','#bOsRootD')" id="bOsRootD" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if "condition" %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+

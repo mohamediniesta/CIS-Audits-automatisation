@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Apache Auditing</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" />
+</head>
+<body class="backgr">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	$(".loader").fadeOut("1000");
+})
+$(document).ready(function(){
+$('#auth').hide();
+$('#proxy').hide();
+$('#log').hide();
+$('#ldap').hide();
+$('#userdir').hide();
+$('#autoindex').hide();
+$('#status').hide();
+$('#dav').hide();
+$('#info').hide();
+$('#userShell').hide();
+$('#usr_apache').hide();
+$('#shell').hide();
+$('#apacheD').hide();
+$('#apacheDG').hide();
+$('#WA').hide();
+$('#CD').hide();
+$('#LokFF').hide();
+$('#PID').hide();
+$('#AccesLog').hide();
+$('#WriteADFF').hide();
+$('#WriteARDFF').hide();
+$('#ovall').hide();
+$('#osacc').hide();
+$('#osov').hide();
+$('#webcont').hide();
+$('#stok').hide();
+$('#ssign').hide();
+$('#etag').hide();
+$('#icons').hide();
+$('#OsRootD').hide();
+$('#WebRootD').hide();
+$('#OtherD').hide();
+$('#DHtmlContent').hide();
+$('#DCGIContentP').hide();
+$('#DCGIContentTest').hide();
+$('#HttpRM').hide();
+$('#HttpTraceM').hide();
+$('#FileE').hide();
+$('#ListenDir').hide();
+$('#BrowserFraOpt').hide();
+$('#HttpPrVer').hide();
+$('#DenyIP').hide();
+$('#lline').hide();
+$('#lfield').hide();
+$('#lfields').hide();
+$('#lbody').hide();
+$('#timeout').hide();
+$('#keepa').hide();
+$('#maxkeep').hide();
+$('#keeptime').hide();
+});
+function show_auth(id1,id2){
+$(document).ready(function(){
+$(id1).show();
+$(id2).hide();
+});
+
+}
+</script>
+<style>
+.bxs{
+width:200px;
+height:20px;
+font-size:10px;
+padding:0;
+background-color:#27ba48;
+border:color:#27ba48;
+}
+.bdgs{
+background-color:#27ba48;
+color:#fff;
+}
+.bdgs:hover{
+color:#fff;
+}
+.bdgd{
+background-color:#ed3d4e;
+color:#fff;
+}
+.backgr{
+background: linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.96)), url("https://wallpapercave.com/wp/wp2071854.png") center center;
+
+}
+.loader {
+position : fixed;
+z-index: 9999;
+background : url('https://pxagency.fr/wp-content/uploads/2010/09/wait.gif') 50% 50% no-repeat;
+top : 0px;
+left : 0px;
+height : 100%;
+width : 100%;
+cursor : wait;
+}
+.progress{
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    background: none;
+    margin: 0 auto;
+    box-shadow: none;
+    position: relative;
+}
+.progress:after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.progress > span{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+.progress .progress-left{
+    left: 0;
+}
+.progress .progress-bar{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-width: 2px;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+}
+.progress .progress-left .progress-bar{
+    left: 100%;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-left: 0;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+}
+.progress .progress-right{
+    right: 0;
+}
+.progress .progress-right .progress-bar{
+    left: -100%;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-right: 0;
+    -webkit-transform-origin: center right;
+    transform-origin: center right;
+    animation: loading-1 1.8s linear forwards;
+}
+.progress .progress-value{
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    border: 2px solid #ebebeb;
+    font-size: 32px;
+    line-height: 125px;
+    text-align: center;
+    position: absolute;
+    top: 7.5%;
+    left: 7.5%;
+}
+.progress.blue .progress-bar{
+    border-color: #049dff;
+}
+.progress.blue .progress-value{
+    color: #049dff;
+}
+.progress.blue .progress-left .progress-bar{
+    animation: loading-2 1.5s linear forwards 1.8s;
+}
+.progress.yellow .progress-bar{
+    border-color: #fdba04;
+}
+.progress.yellow .progress-value{
+    color: #fdba04;
+}
+.progress.yellow .progress-left .progress-bar{
+    animation: loading-3 1s linear forwards 1.8s;
+}
+.progress.red .progress-bar{
+    border-color: #ed3d4e;
+}
+.progress.red .progress-value{
+    color: #ed3d4e;
+}
+.progress.red .progress-left .progress-bar{
+    animation: loading-4 0.4s linear forwards 1.8s;
+}
+.progress.green .progress-bar{
+    border-color: #27ba48;
+}
+.progress.green .progress-value{
+    color: #27ba48;
+}
+.progress.green .progress-left .progress-bar{
+    animation: loading-5 1.2s linear forwards 1.8s;
+}
+@keyframes loading-1{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+@keyframes loading-2{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(144deg);
+        transform: rotate(144deg);
+    }
+}
+@keyframes loading-3{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg);
+    }
+}
+@keyframes loading-4{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(36deg);
+        transform: rotate(36deg);
+    }
+}
+@keyframes loading-5{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+@media only screen and (max-width: 990px){
+    .progress{ margin-bottom: 20px; }
+}
+</style>
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-5">
+<table class="table table-hover">
+<thead>
+<caption style="caption-side:top;"><center>Operating System Informations</center></caption>
+</thead>
+<tbody>
+<tr>
+<td>
+<p style="font-size:13px;"><b>System</b> </p>
+</td>
+<td style="font-size:12px;">
+{{ system }} <br>
+</td>
+</tr>
+<tr>
+<td>
+<p style="font-size:13px;"><b>User</b> </p>
+</td>
+<td style="font-size:12px;">
+{{ id }} <br>
+</td>
+</tr>
+<tr>
+<td>
+<p style="font-size:13px;"><b>Date</b> </p>
+</td>
+<td style="font-size:12px;">
+{{ dates }} <br>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="list-group">
+<div class="row">
+<div class="col-md-4">
+<a href="?page=modules" class='list-group-item{% if page == "modules" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>Apache <br> Modules<br></center></a>
+</div>
+<div class="col-md-4">
+<a href="?page=permissions " class='list-group-item{% if page == "permissions" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>Permissions, <br> & Ownership</center></a>
+</div>
+<div class="col-md-4">
+<a href="?page=access" class='list-group-item{% if page == "access" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>Access <br>Control</center></a>
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-4">
+<a href="?page=options " class='list-group-item{% if page == "options" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>Content, <br> & Options</center></a>
+</div>
+<div class="col-md-4">
+<a href="?page=log" class='list-group-item{% if page == "log" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>Logging , <br>& Monitoring</center></a>
+</div>
+<div class="col-md-4">
+<a href="?page=ssl" class='list-group-item{% if page == "ssl" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>SSL/TLS <br>Config</center></a>
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-4">
+<a href="?page=info" class='list-group-item{% if page == "info" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>Information <br>Leakage</center></a>
+</div>
+<div class="col-md-4">
+<a href="?page=dos" class='list-group-item{% if page == "dos" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>Denial , <br>Of Service</center></a>
+</div>
+<div class="col-md-4">
+<a href="?page=request" class='list-group-item{% if page == "request" %} bdgs' {% else %}' style="color:black;opacity:0.6"{% endif %}><center>Requests <br>Limits</center></a>
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-12">
+<a href="/" class="list-group-item" style="color:black;opacity:0.6"><center>Rescan <br> Server</center></a>
+</div>
+</div>
+</ul>
+</div>
+ 
+<div class="col-md-2"><br>
+            <p style="color:#ed3d4e;">Danger</p>
+            <div class="progress red">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                <div class="progress-value">
+{% if page == "modules" %}
+{{ pourcentage_d }}%
+</div>
+            </div>
+<script>
+var p = {{ pourcentage_d }};
+$(document).ready(function(){
+if(p > 20 && p < 55 ){
+$('.progress.red').removeClass('progress red').addClass('progress yellow');
+}
+if(p <= 20){
+$('.progress.red').removeClass('progress red').addClass('progress green');
+}
+});
+</script>
+{% endif %}
+{% if page == "access" %}
+{{ pourcentage_access }}%
+</div>
+            </div>
+<script>
+var p = {{ pourcentage_access }};
+$(document).ready(function(){
+if(p > 20 && p < 55 ){
+$('.progress.red').removeClass('progress red').addClass('progress yellow');
+}
+if(p <= 20){
+$('.progress.red').removeClass('progress red').addClass('progress green');
+}
+});
+</script>
+{% endif %}
+{% if page == "permissions" %}
+{{ pourcentage_p }}%
+</div>
+            </div>
+<script>
+var p = {{ pourcentage_p }};
+$(document).ready(function(){
+if(p > 20 && p < 55 ){
+$('.progress.red').removeClass('progress red').addClass('progress yellow');
+}
+if(p <= 20){
+$('.progress.red').removeClass('progress red').addClass('progress green');
+}
+});
+</script>
+{% endif %}
+{% if page == "info" %}
+{{ pourcentage_i }}%
+</div>
+            </div>
+<script>
+var p = {{ pourcentage_i }};
+$(document).ready(function(){
+if(p > 20 && p < 55 ){
+$('.progress.red').removeClass('progress red').addClass('progress yellow');
+}
+if(p <= 20){
+$('.progress.red').removeClass('progress red').addClass('progress green');
+}
+});
+</script>
+{% endif %}
+{% if page == "options" %}
+{{ pourcentage_i }}%
+</div>
+            </div>
+<script>
+var p = {{ pourcentage_i }};
+$(document).ready(function(){
+if(p > 20 && p < 55 ){
+$('.progress.red').removeClass('progress red').addClass('progress yellow');
+}
+if(p <= 20){
+$('.progress.red').removeClass('progress red').addClass('progress green');
+}
+});
+</script>
+{% endif %}
+{% if page == "request" %}
+{{ pourcentage_limit }}%
+</div>
+            </div>
+<script>
+var p = {{ pourcentage_limit }};
+$(document).ready(function(){
+if(p > 20 && p < 55 ){
+$('.progress.red').removeClass('progress red').addClass('progress yellow');
+}
+if(p <= 20){
+$('.progress.red').removeClass('progress red').addClass('progress green');
+}
+});
+</script>
+{% endif %}
+{% if page == "dos" %}
+{{ pourcentage_dos }}%
+</div>
+            </div>
+<script>
+var p = {{ pourcentage_dos }};
+$(document).ready(function(){
+if(p > 20 && p < 55 ){
+$('.progress.red').removeClass('progress red').addClass('progress yellow');
+}
+if(p <= 20){
+$('.progress.red').removeClass('progress red').addClass('progress green');
+}
+});
+</script>
+{% endif %}
+<br><br>
+<p style="color:#27ba48;">Active Modules</p>
+<div class="progress green">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                <div class="progress-value">{{ nb_mod }}</div>
+            </div>
+</div>
+
+<div class="col-md-5">
+{% if page == "modules" %}
+{% include "/root/Bureau/apache/blog/templates/modules.html" %}
+{% endif %}
+
+{% if page == "permissions" %}
+{% include "/root/Bureau/apache/blog/templates/permissions.html" %}
+{% endif %}
+
+{% if page == "access" %}
+{% include "/root/Bureau/apache/blog/templates/access.html" %}
+{% endif %}
+
+{% if page == "info" %}
+{% include "/root/Bureau/apache/blog/templates/info.html" %}
+{% endif %}
+
+{% if page == "options" %}
+{% include "/root/Bureau/apache/blog/templates/options.html" %}
+{% endif %}
+{% if page == "request" %}
+{% include "/root/Bureau/apache/blog/templates/request.html" %}
+{% endif %}
+{% if page == "dos" %}
+{% include "/root/Bureau/apache/blog/templates/dos.html" %}
+{% endif %}
+ </div>
+</div>
+</div>
+</body>
+</html>

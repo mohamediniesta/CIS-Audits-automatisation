@@ -1,0 +1,98 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+from django.http import HttpResponse,HttpResponseRedirect
+from django.shortcuts import render
+import subprocess
+from pexpect import pxssh
+def saute(str):
+    return '\r\n'.join(str.splitlines()[1:])
+def cmd():
+def home(request):
+    page = request.GET.get("page")
+    print page
+    old = request.session.get('old')
+    user =  old.get("user")
+    password = old.get("pass")
+    host = old.get("host")
+    try:
+        s = pxssh.pxssh()
+        s.login(host,user,password)
+        s.sendline('httpd -M | egrep "auth._" --color=none')
+        s.prompt()
+        auth = saute(s.before)
+        s.sendline('httpd -M | egrep "ldap" --color=none')
+        s.prompt()
+        ldap = saute(s.before)
+        s.sendline('httpd -M | grep log_config --color=none')
+        s.prompt()
+        log = saute(s.before)
+        s.sendline('httpd -M | grep "dav_" --color=none')
+        s.prompt()
+        dav = saute(s.before)
+        s.sendline('httpd -M | egrep "status_module" --color=none')
+        s.prompt()
+        status = saute(s.before)
+        s.sendline('httpd -M | grep autoindex_module --color=none')
+        s.prompt()
+        index = saute(s.before)
+        s.sendline('httpd -M | egrep "proxy_" --color=none')
+        s.prompt()
+        proxy = saute(s.before)
+        s.sendline('httpd -M | grep userdir --color=none')
+        s.prompt()
+        user = saute(s.before)
+        s.sendline('httpd -M | egrep "info_module" --color=none')
+        s.prompt()
+        info = saute(s.before)
+        s.sendline("grep -i '^User' /etc/httpd/conf/httpd.conf --color=none")
+        s.prompt()
+        user_own = saute(s.before) 
+        s.sendline("grep -i '^Group' /etc/httpd/conf/httpd.conf --color=none")
+        s.prompt() 
+        group_own = saute(s.before)
+        s.sendline("grep apache /etc/passwd --color=none")
+        s.prompt()
+        passwd = saute(s.before)
+        #s.sendline("passwd -S apache")
+        #s.prompt()
+        #lock = saute(s.before)
+        s.sendline("uname -a")
+        s.prompt()
+        system = saute(s.before)
+        s.sendline("id")
+        s.prompt()
+        id = saute(s.before)
+        s.sendline("date")
+        s.prompt()
+        dates = saute(s.before)
+        s.logout()
+        context = {
+        'auth':auth,
+        'ldap':ldap,
+        'log':log,
+        'dav':dav,
+        'status':status,
+        'index':index,
+        'proxy':proxy,
+        'user':user,
+        'info':info,
+        'grp_apache':group_own,
+        'usr_apache':user_own,
+        'shell_apache':passwd,
+        #'lock':lock
+        'system':system,
+        'id':id,
+        'dates':dates,
+        'page':page,
+        }
+    except pxssh.ExceptionPxssh as e:
+        print "Erreur SSH ! "
+    return render(request,"/home/test/apache/blog/templates/test.html",context)
+def login(request):
+    old = request.session['old'] = request.POST
+    if request.method == "POST":
+        return HttpResponseRedirect("/scan/")
+    context = {
+    'username':'root',
+    }
+    return render(request,"/home/test/apache/blog/templates/login.html",context)

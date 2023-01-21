@@ -1,0 +1,84 @@
+<table class="table table-hover">
+<thead>
+<caption style="caption-side:top;"><center>Apache Access Control</center></caption>
+<tr>
+<th style="font-size:13px;">Title</th>
+<th style="font-size:13px;"><center>Result</center></th>
+<th style="font-size:13px;"><center>Security</center></th>
+</tr>
+</thead>
+<tbody>
+
+<tr><td>
+<p style="font-size:13px;"><b>ServerToken</b></p></td>
+<td style="font-size:12px;">
+<span id="stok">
+{{ ServTok }}
+{% if ServTok == "" %}
+None
+{% endif %}
+</span>
+<button onclick="show_auth('#stok','#bstok')" id="bstok" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if "Prod" in ServTok or "ProductOnly" in ServTok %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>ServerSignature </b></p></td>
+<td style="font-size:12px;">
+<span id="ssign">
+{{ ServerS }}
+{% if ServerS == "" %}
+None
+{% endif %}
+</span>
+<button onclick="show_auth('#ssign','#bssign')" id="bssign" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if "ServerSignature Off" in ServerS  %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>Default Apache Content</b></p></td>
+<td style="font-size:12px;">
+<span id="osov">
+{{ Icons }}
+</span>
+<button onclick="show_auth('#icons','#bicons')" id="bicons" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if Icons == "" %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>ETag</b></p></td>
+<td style="font-size:12px;">
+<span id="etag">
+{{ Etag }}
+{% if Etag == "" %}
+None
+{% endif %}
+</span>
+<button onclick="show_auth('#etag','#betag')" id="betag" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if Etag == "" or "all" not in Etag|lower or "inode" in Etag or "+inode" in Etag %}
+<span class="badge bdgs">!</span>
+{% else %}
+<span class="badge bdgd">!</span>
+{% endif %}
+</td>
+</tr>

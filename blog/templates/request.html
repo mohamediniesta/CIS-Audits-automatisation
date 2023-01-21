@@ -1,0 +1,91 @@
+<table class="table table-hover">
+<thead>
+<caption style="caption-side:top;"><center>Apache Access Control</center></caption>
+<tr>
+<th style="font-size:13px;">Title</th>
+<th style="font-size:13px;"><center>Result</center></th>
+<th style="font-size:13px;"><center>Security</center></th>
+</tr>
+</thead>
+<tbody>
+
+<tr><td>
+<p style="font-size:13px;"><b>LimitRequestLine</b></p></td>
+<td style="font-size:12px;">
+<span id="lline">
+{% if LimitLine|add:"0" == 0 %}
+None
+{% else %}
+{{ LimitLine }}
+{% endif %}
+</span>
+<button onclick="show_auth('#lline','#blline')" id="blline" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if LimitLine|add:"0" == 0 or LimitLine|add:"0" > 512 %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>LimitRequestFields </b></p></td>
+<td style="font-size:12px;">
+<span id="lfield">
+{% if LimitField|add:"0" == 0 %}
+None
+{% else %}
+{{ LimitField }}
+{% endif %}
+</span>
+<button onclick="show_auth('#lfield','#blfield')" id="blfield" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if LimitField|add:"0" > 100 and LimitField|add:"0" != 0 %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>LimitRequestFieldsize</b></p></td>
+<td style="font-size:12px;">
+<span id="lfields">
+{% if LimitFieldS|add:"0" == 0 %}
+None
+{% else %}
+{{ LimitFieldS }}
+{% endif %}
+</span>
+<button onclick="show_auth('#lfields','#blfields')" id="blfields" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if LimitFieldS|add:"0" == 0 or LimitFieldS|add:"0" > 1024 %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
+<tr><td>
+<p style="font-size:13px;"><b>LimitRequestBody</b></p></td>
+<td style="font-size:12px;">
+<span id="lbody">
+{% if LimitBody|add:"0" == 0 %}
+None
+{% else %}
+{{ LimitBody }}
+{% endif %}
+</span>
+<button onclick="show_auth('#lbody','#blbody')" id="blbody" class="btn btn-success bxs">Show result</button>
+</td>
+<td>
+{% if LimitBody|add:"0" == 0 or LimitBody|add:"0" > 102400 %}
+<span class="badge bdgd">!</span>
+{% else %}
+<span class="badge bdgs">!</span>
+{% endif %}
+</td>
+</tr>
